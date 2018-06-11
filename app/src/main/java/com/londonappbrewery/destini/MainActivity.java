@@ -13,7 +13,26 @@ public class MainActivity extends AppCompatActivity {
     Button mTopButton;
     Button mBottomButton;
     TextView mStoryTextView;
+    int mStory;
+    int mIndex;
+    int mTop;
+    int mBottom;
+    int mAnswerIndex;
 
+    private StoryProgress[] mStoryMainText = new StoryProgress[]{
+            new StoryProgress(R.string.T1_Story),
+            new StoryProgress(R.string.T2_Story),
+            new StoryProgress(R.string.T3_Story),
+            new StoryProgress(R.string.T1_Ans1),
+            new StoryProgress(R.string.T1_Ans2),
+            new StoryProgress(R.string.T2_Ans1),
+            new StoryProgress(R.string.T2_Ans2),
+            new StoryProgress(R.string.T3_Ans1),
+            new StoryProgress(R.string.T3_Ans2),
+            new StoryProgress(R.string.T4_End),
+            new StoryProgress(R.string.T5_End),
+            new StoryProgress(R.string.T6_End)
+    };
 
 
     @Override
@@ -27,16 +46,20 @@ public class MainActivity extends AppCompatActivity {
         mBottomButton = findViewById(R.id.buttonBottom);
         mStoryTextView = findViewById(R.id.storyTextView);
 
+        mStory = mStoryMainText[mIndex].getStoryID();
+        mStoryTextView.setText(mStory);
+
 
         // TODO: Steps 6, 7, & 9 - Set a listener on the top button:
         mTopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Destini","top button checking in");
+                mIndex++;
+                mAnswerIndex = mIndex+3;
+                updateStory();
             }
         });
-
-
 
         // TODO: Steps 6, 7, & 9 - Set a listener on the bottom button:
         mBottomButton.setOnClickListener(new View.OnClickListener() {
@@ -46,5 +69,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-}
+    }//end onCreate
+
+    public void updateStory(){
+
+        mStory = mStoryMainText[mIndex].getStoryID();
+        mStoryTextView.setText(mStory);
+        mTop = mStoryMainText.
+
+    }//end updateStory
+}//end class
