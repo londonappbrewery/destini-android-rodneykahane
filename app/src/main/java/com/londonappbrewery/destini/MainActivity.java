@@ -13,25 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button mTopButton;
     Button mBottomButton;
     TextView mStoryTextView;
-    int mStory;
-    int mIndex;
-    int mTop;
-    int mBottom;
-    int mAnswerIndex;
-    int mStoryPath;
-    int clickTop;
-    int clickBottom;
-
     int mStoryIndex=1;
-
-    private StoryProgress[] mStoryMainText = new StoryProgress[]{
-            new StoryProgress(R.string.T1_Story,R.string.T1_Ans1,R.string.T1_Ans2),
-            new StoryProgress(R.string.T2_Story,R.string.T2_Ans1,R.string.T2_Ans2),
-            new StoryProgress(R.string.T3_Story,R.string.T3_Ans1,R.string.T3_Ans2),
-            new StoryProgress(R.string.T4_End,0,0),
-            new StoryProgress(R.string.T5_End,0,0),
-            new StoryProgress(R.string.T6_End,0,0)
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,29 +25,22 @@ public class MainActivity extends AppCompatActivity {
         mBottomButton = findViewById(R.id.buttonBottom);
         mStoryTextView = findViewById(R.id.storyTextView);
 
-        mStory = mStoryMainText[mIndex].getStoryID();
-        mStoryTextView.setText(mStory);
-
-
         // TODO: Steps 6, 7, & 9 - Set a listener on the top button:
         mTopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Log.d("Destini","top button checking in");
-                //mIndex++;
-                topClick();
-                updateStory();*/
+               // Log.d("Destini","top button checking in");
 
                 if(mStoryIndex==1||mStoryIndex==2){
                     mStoryTextView.setText(R.string.T3_Story);
                     mTopButton.setText(R.string.T3_Ans1);
                     mBottomButton.setText(R.string.T3_Ans2);
                     mStoryIndex=3;
-                } else if (mStoryIndex==3){
+                } else {
                     mStoryTextView.setText(R.string.T6_End);
                     mTopButton.setVisibility(View.GONE);
                     mBottomButton.setVisibility(View.GONE);
-                }//end if/else if
+                }//end if/else
             }//end onClick
         });
 
@@ -73,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Log.d("Destini","bottom button checking in");
-                //mIndex++;
-                updateStory();*/
+                //Log.d("Destini","bottom button checking in");
 
                 if(mStoryIndex==1){
                     mStoryTextView.setText(R.string.T2_Story);
@@ -95,20 +68,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }//end onCreate
-
-    public void updateStory(){
-        Log.d("Destini","mIndex is "+mIndex);
-        mStory = mStoryMainText[mIndex].getStoryID();
-        mStoryTextView.setText(mStory);
-        mTop = mStoryMainText[mIndex].getResponseIDTop();
-        mTopButton.setText(mTop);
-        mBottom = mStoryMainText[mIndex].getResponseIDBottom();
-        mBottomButton.setText(mBottom);
-
-    }//end updateStory
-
-    public void topClick() {
-        clickTop++;
-    }
 
 }//end class
