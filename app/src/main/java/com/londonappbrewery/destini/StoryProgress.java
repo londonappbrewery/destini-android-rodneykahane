@@ -3,11 +3,14 @@ package com.londonappbrewery.destini;
 public class StoryProgress {
 
     private int mStoryID;
-    private int mResponseID;
+    private int mResponseIDTop;
+    private int mResponseIDBottom;
 
-    public StoryProgress(int storyTextID) {
+    public StoryProgress(int storyTextID, int responseTop, int responseBottom) {
 
         mStoryID = storyTextID;
+        mResponseIDTop = responseTop;
+        mResponseIDBottom = responseBottom;
 
     }//end StoryProgress
 
@@ -19,11 +22,20 @@ public class StoryProgress {
         mStoryID = storyID;
     }
 
-    public int getAnswerID() {
-        return mResponseID;
+    public int getResponseIDTop() {
+        return mResponseIDTop;
     }
 
-    public void setAnswerID(int answerID) {
-        mResponseID = answerID;
+    public void setResponseIDTop(int responseIDTop) {
+        mResponseIDTop = responseIDTop;
     }
-}
+
+    public int getResponseIDBottom() {
+        return mResponseIDBottom;
+    }
+
+    public void setResponseIDBottom(int responseIDBottom) {
+        mResponseIDBottom = responseIDBottom;
+    }
+}//end class
+
